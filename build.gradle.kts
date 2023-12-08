@@ -49,6 +49,7 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3")
+    implementation("cn.hutool:hutool-all:5.8.23")
 }
 
 tasks.withType<Test> {
