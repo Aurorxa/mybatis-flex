@@ -10,7 +10,7 @@ spring:
     validate-on-migrate: true
     baseline-on-migrate: true
     out-of-order: true
-    clean-disabled: false 
+    clean-disabled: false
     clean-on-validation-error: true
   docker:
     compose:
