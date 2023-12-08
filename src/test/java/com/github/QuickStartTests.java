@@ -5,7 +5,9 @@ import com.github.mapper.AccountMapper;
 import com.mybatisflex.core.query.QueryWrapper;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.github.domain.table.AccountTableDef.ACCOUNT;
@@ -17,16 +19,18 @@ public class QuickStartTests {
     @Resource
     private AccountMapper accountMapper;
 
-    @Test
-    public void testQuickStart() {
+    @ParameterizedTest
+    @ValueSource(ints = {18,19})
+    public void testQuickStart(int age) {
         QueryWrapper queryWrapper = QueryWrapper
                 .create()
-                .select()
-                .where(ACCOUNT.AGE.eq(18));
+                .where(ACCOUNT.AGE.eq(age));
 
         Account account = accountMapper.selectOneByQuery(queryWrapper);
 
         log.info("{}", account);
+
+        Assertions.assertNotNull(account);
     }
 
 }
